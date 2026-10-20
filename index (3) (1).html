@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff8f2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<title>For Amina</title>
+<style>
+:root{
+  --deep:#b84f78;--cream:#fff8f2;--ink:#603b4b;--line:#f1d6e0;--paper:#fffdf9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--ink);
+  font-family:Georgia,serif;background:var(--cream);overflow-x:hidden;
+}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid #b84f78;outline-offset:4px}
+.wrap{position:relative;z-index:1;width:min(100% - 28px,760px);margin:auto}
+.screen{display:none;min-height:100vh;padding:40px 0;align-items:center;justify-content:center;flex-direction:column;text-align:center;animation:fadeIn .9s ease both}
+.screen.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.floating{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.heart{position:absolute;bottom:-35px;color:#d98ca7;opacity:0;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.65}90%{opacity:.5}100%{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.2em;color:var(--deep);font-weight:700;margin-bottom:10px}
+h1,h2,p{margin-top:0}
+h1{font:400 clamp(2.6rem,9vw,4.6rem)/1.08 Georgia,serif;letter-spacing:-.04em;margin:0 0 28px;color:var(--deep)}
+h2{font:400 clamp(2rem,6vw,2.8rem)/1.1 Georgia,serif;letter-spacing:-.03em;margin:0 0 26px;color:var(--deep)}
+.btn{border:0;border-radius:99px;padding:12px 22px;background:var(--deep);color:#fff;transition:opacity .2s}
+.btn:hover{opacity:.85}
+.btn.light{background:transparent;color:var(--deep);border:1px solid var(--line)}
+.envelope-button{background:none;border:0;padding:0;margin:0 auto;max-width:min(90vw,400px);width:100%;transition:transform .25s;filter:drop-shadow(0 20px 22px #b76a8730)}
+.envelope-button:hover{transform:translateY(-4px)}
+.envelope{position:relative;display:block;width:100%;aspect-ratio:1.48/1;perspective:1000px}
+.env-back{position:absolute;inset:14% 0 0;background:linear-gradient(180deg,#d9789b,#e89ab4);border-radius:10px}
+.env-paper{position:absolute;left:8%;right:8%;top:20%;height:68%;background:var(--paper);border-radius:4px;z-index:1;box-shadow:0 -2px 8px #a75e7814;display:flex;align-items:center;justify-content:center;color:#e3a2b8;font-size:1.5rem;background-image:repeating-linear-gradient(180deg,transparent 0 17px,#f6e4ea 17px 18px);background-position:0 8px;transition:transform .9s cubic-bezier(.3,.7,.25,1) .55s}
+.env-front{position:absolute;inset:14% 0 0;z-index:3;background:linear-gradient(160deg,#fbd9e4,#f2b3c7);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:0 0 10px 10px}
+.env-fold{position:absolute;inset:14% 0 0;z-index:3;background:linear-gradient(0deg,#fde6ee,#f8c6d6);clip-path:polygon(0 100%,50% 52%,100% 100%);border-radius:0 0 10px 10px}
+.env-flap{position:absolute;inset:14% 0 auto;height:50%;z-index:4;background:linear-gradient(180deg,#f0a8bf,#f8c9d8);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .9s cubic-bezier(.4,.1,.3,1),z-index 0s .45s}
+.seal{position:absolute;z-index:5;left:50%;top:64%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d9678f,#a8416a 70%);color:#ffe9f0;display:grid;place-items:center;font-size:1.4rem;box-shadow:0 4px 10px #7d2d4c40,inset 0 0 0 3px #c25a80;transition:opacity .4s,transform .5s}
+.seal:before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px dashed #ffd0df88}
+.seal:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--deep);opacity:0;animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.85);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+.hint{position:relative;display:inline-flex;align-items:center;gap:9px;margin-top:26px;padding:10px 22px 10px 16px;border-radius:99px;background:linear-gradient(135deg,#fff,#ffe3ec);border:1px solid #f4c6d6;color:var(--deep);font:italic 1.1rem Georgia,serif;letter-spacing:.02em;box-shadow:0 8px 22px #b84f782e,0 0 0 6px #f6c5d433;animation:bob 2.2s ease-in-out infinite;transition:opacity .3s}
+.hint:before{content:"";position:absolute;top:-7px;left:50%;width:12px;height:12px;background:#fff;border-left:1px solid #f4c6d6;border-top:1px solid #f4c6d6;transform:translateX(-50%) rotate(45deg)}
+.hint .heart-ico{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--deep);color:#fff;font-size:.9rem;font-style:normal;animation:beat 1.4s ease-in-out infinite}
+.hint .spark{position:absolute;color:#e994b1;font-style:normal;font-size:.9rem;animation:twinkle 1.6s ease-in-out infinite}
+.hint .s1{top:-12px;right:14px}.hint .s2{bottom:-10px;left:18px;animation-delay:-.8s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.2)}}
+.envelope-button.opened .hint{opacity:0;animation:none}
+.corner{position:absolute;opacity:.55;animation:sway 6s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.heart.flower{opacity:0}
+.envelope-button.opened .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope-button.opened .env-paper{transform:translateY(-34%)}
+.envelope-button.opened .seal{opacity:0;transform:translate(-50%,-50%) scale(.6) rotate(20deg)}
+.paper-card{width:100%;max-width:620px;padding:clamp(24px,6vw,48px);background:var(--paper);border:1px solid var(--line);border-radius:6px;text-align:left}
+.letter-greeting{font:italic 1.5rem Georgia,serif;color:var(--deep);margin-bottom:20px}
+.letter-writing{min-height:200px;white-space:pre-wrap;font:1.05rem/1.9 Georgia,serif;color:#765463}
+.letter-writing:empty:before{content:"Write your letter here.";color:#c4a2af;font-style:italic}
+.letter-signature{font:italic 1.3rem Georgia,serif;text-align:right;color:var(--deep);margin-top:24px}
+.nav-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:100%}
+.polaroid{padding:10px 10px 16px;background:#fff;border:1px solid #f0dbe3;box-shadow:0 12px 30px #8c5c6b14;transform:rotate(var(--tilt));transition:transform .25s}
+.polaroid:hover{transform:rotate(0) translateY(-4px)}
+.caption{font:500 1.55rem/1.05 'Caveat','Bradley Hand','Segoe Script','Comic Sans MS',cursive;text-align:center;margin:10px 2px 0;color:#d4487f;letter-spacing:.01em;opacity:.92;transform:rotate(-1.5deg)}
+.polaroid:nth-child(2) .caption{transform:rotate(1deg)}
+.polaroid:nth-child(3) .caption{transform:rotate(-.5deg)}
+.photo-frame{aspect-ratio:4/5;display:grid;place-items:center;position:relative;overflow:hidden;background:#fbe9ef;color:#d98ca7;font-size:1.6rem}
+.photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.question{max-width:560px}
+.choices{display:flex;flex-direction:column;gap:14px;align-items:center;margin-top:8px}
+.choice{min-width:270px;padding:13px 32px;font:700 1.6rem/1.2 'Dancing Script','Segoe Script','Brush Script MT',cursive;letter-spacing:.01em;background:linear-gradient(135deg,#ea75a2,#b84f78);color:#fff;border:2px solid #ffffffaa;box-shadow:0 12px 26px #b84f7845,inset 0 1px 0 #ffffff66;transition:transform .2s,box-shadow .2s}
+.choice.alt{background:linear-gradient(135deg,#f8b3c8,#e2709b)}
+.choice:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 30px #b84f7855,inset 0 1px 0 #ffffff66;opacity:1}
+.cloud{position:relative;margin:34px auto 0;padding:clamp(34px,7vw,54px) clamp(24px,6vw,52px);max-width:600px;width:100%;background:#fff;border-radius:60px;box-shadow:0 18px 50px #b84f7826;display:flex;flex-direction:column;align-items:center}
+.cloud:before,.cloud:after{content:"";position:absolute;background:#fff;border-radius:50%;z-index:-1}
+.cloud:before{width:34%;aspect-ratio:1;top:-17%;left:11%}
+.cloud:after{width:42%;aspect-ratio:1;top:-24%;right:12%}
+.cloud>*{position:relative}
+.big-heart{font-size:3rem;color:var(--deep);animation:beat 1.4s ease-in-out infinite;margin-bottom:6px}
+.answer{max-width:480px;font:1.15rem/1.9 Georgia,serif;color:#765463;margin:0 auto}
+.burst{position:fixed;pointer-events:none;z-index:5;font-size:22px;animation:burst 1.4s ease-out forwards}
+@keyframes burst{0%{opacity:1;transform:translate(0,0) scale(.6)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.3)}}
+@media(max-width:560px){
+  .choice{min-width:230px;font-size:1.4rem}
+  .photo-grid{gap:7px}.polaroid{padding:6px 6px 12px}.caption{font-size:1.05rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="floating" id="floating" aria-hidden="true"></div>
+<div class="wrap">
+<main>
+  <!-- SCREEN 1: Envelope cover -->
+  <section class="screen active" id="cover">
+    <h1>A little letter<br>for Amina.</h1>
+    <button class="envelope-button" id="envelopeButton" aria-label="Open your letter" onclick="openLetter()">
+      <span class="envelope">
+        <span class="env-back"></span>
+        <span class="env-paper">♡</span>
+        <span class="env-front"></span><span class="env-fold"></span><span class="env-flap"></span><span class="seal">♡</span>
+      </span>
+      <span class="hint"><i class="spark s1">✦</i><i class="spark s2">✧</i><i class="heart-ico">♡</i>press here to open</span>
+    </button>
+  </section>
+
+  <!-- SCREEN 2: Your personal letter -->
+  <section class="screen" id="letterScreen">
+    <div class="eyebrow">just between us</div>
+    <h2>A note for you</h2>
+    <article class="paper-card">
+      <div class="letter-greeting">Dear Amina,</div>
+
+      <!-- PERSONAL LETTER: Replace the text below with your own letter. Keep the surrounding div. -->
+      <div class="letter-writing" id="personalLetter"></div>
+      <!-- END PERSONAL LETTER -->
+
+      <div class="letter-signature">♡</div>
+    </article>
+    <div class="nav-row">
+      <button class="btn light" onclick="showScreen('cover')">← Back</button>
+      <button class="btn" onclick="showScreen('photos')">Our memories →</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 3: Photos of you two -->
+  <section class="screen" id="photos">
+    <h2>Little moments, us.</h2>
+    <div class="photo-grid">
+      <div class="polaroid" style="--tilt:-2deg">
+        <div class="photo-frame">
+          <!-- PHOTO 1: Replace photo1.jpg with your photo filename -->
+          <img src="photo1.jpg" alt="" onerror="this.style.display='none'">♡
+        </div>
+        <div class="caption">my favourite picture</div>
+      </div>
+      <div class="polaroid" style="--tilt:2deg">
+        <div class="photo-frame">
+          <!-- PHOTO 2: Replace photo2.jpg with your photo filename -->
+          <img src="photo2.jpg" alt="" onerror="this.style.display='none'">♡
+        </div>
+        <div class="caption">my favourite moment with you</div>
+      </div>
+      <div class="polaroid" style="--tilt:-1deg">
+        <div class="photo-frame">
+          <!-- PHOTO 3: Replace photo3.jpg with your photo filename -->
+          <img src="photo3.jpg" alt="" onerror="this.style.display='none'">♡
+        </div>
+        <div class="caption">my favourite memories</div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn light" onclick="showScreen('letterScreen')">← Back</button>
+      <button class="btn" onclick="showScreen('dateScreen')">One more thing ♡</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 4: The question -->
+  <section class="screen" id="dateScreen">
+    <div class="cloud">
+      <div class="big-heart">♡</div>
+      <h2 class="question">Will you go on a date with me on October 24th?</h2>
+      <div class="choices">
+        <button class="btn choice" onclick="answer('a',event)">Yes, of course ♡</button>
+        <button class="btn choice alt" onclick="answer('b',event)">Yes, obviously 🌸</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 5: Answers -->
+  <section class="screen" id="answerA">
+    <div class="cloud">
+      <div class="big-heart">♡</div>
+      <h2>That's my favourite option.</h2>
+      <p class="answer">I was hoping you'd pick that one. October 24th, it's a date. I can't wait ♡</p>
+      <div class="nav-row"><button class="btn choice" onclick="showScreen('cover')">Read it again ♡</button></div>
+    </div>
+  </section>
+
+  <section class="screen" id="answerB">
+    <div class="cloud">
+      <div class="big-heart">🌸</div>
+      <h2>Oh, that's my favourite option too.</h2>
+      <p class="answer">Good answer. Mark October 24th, I'll take it from here ♡</p>
+      <div class="nav-row"><button class="btn choice alt" onclick="showScreen('cover')">Read it again ♡</button></div>
+    </div>
+  </section>
+</main>
+</div>
+<script>
+  const floating=document.getElementById('floating');
+  const symbols=['♡','♥','♡','✧','✿','❀','🌸','🌷','💗','🌼','✨'];
+  for(let i=0;i<38;i++){
+    const el=document.createElement('span');
+    el.className='heart';
+    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=Math.random()*100+'%';
+    el.style.animationDuration=(11+Math.random()*14)+'s';
+    el.style.animationDelay=(-Math.random()*24)+'s';
+    el.style.fontSize=(14+Math.random()*22)+'px';
+    floating.appendChild(el);
+  }
+  // swaying flowers in the corners
+  [['🌸','left:2%;bottom:3%;font-size:46px','0s'],['🌷','right:3%;bottom:2%;font-size:50px','-2s'],
+   ['🌼','left:4%;top:4%;font-size:34px','-4s'],['🌸','right:5%;top:6%;font-size:38px','-1s']].forEach(([c,st,d])=>{
+    const f=document.createElement('span');
+    f.className='corner';f.textContent=c;f.style.cssText+=st;f.style.animationDelay=d;
+    floating.appendChild(f);
+  });
+  function showScreen(id){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    if(id==='cover') document.getElementById('envelopeButton').classList.remove('opened');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function answer(which,ev){
+    const items=['♡','♥','🌸','✨','💗'];
+    const x=ev.clientX,y=ev.clientY;
+    for(let i=0;i<18;i++){
+      const b=document.createElement('span');
+      b.className='burst';b.textContent=items[i%items.length];
+      b.style.left=x+'px';b.style.top=y+'px';
+      b.style.setProperty('--dx',(Math.random()*300-150)+'px');
+      b.style.setProperty('--dy',(-Math.random()*220-20)+'px');
+      document.body.appendChild(b);
+      setTimeout(()=>b.remove(),1500);
+    }
+    setTimeout(()=>showScreen(which==='a'?'answerA':'answerB'),450);
+  }
+  function openLetter(){
+    document.getElementById('envelopeButton').classList.add('opened');
+    setTimeout(()=>showScreen('letterScreen'),2300);
+  }
+  // Keep photo1.jpg, photo2.jpg and photo3.jpg in the same folder as index.html.
+</script>
+</body>
+</html>
